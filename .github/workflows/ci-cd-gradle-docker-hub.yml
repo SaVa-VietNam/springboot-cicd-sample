@@ -1,9 +1,9 @@
 name: Build and deploy springboot-api to docker hub
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "dkcr" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "dkcr" ]
 
 jobs:
   build-deploy:
