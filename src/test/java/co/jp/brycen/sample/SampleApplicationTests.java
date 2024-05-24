@@ -8,7 +8,7 @@ class SampleApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println("Hello");
+		System.out.println("Hello Spring Boot!");
 	}
 
 }
