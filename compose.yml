@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  # database:
+  #   image: mysql:5.7
+  #   container_name: mysql01
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: 'library'
+  #     MYSQL_USER: 'xeex'
+  #     MYSQL_PASSWORD: 'xeex'
+  #     MYSQL_ROOT_HOST: '%'
+  #     MYSQL_ROOT_PASSWORD: 'xeex'
+  #     TZ: 'Asia/Tokyo'
+  #   networks:
+  #     - dev
+  #   ports:
+  #     - '3306:3306'
+  #   expose:
+  #     - '3306'
+  #   volumes:
+  #     - './.mysql/db:/var/lib/mysql'
+  #   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
+  springboot-api:
+    image: trandinhtu/rest-api:latest
+    container_name: rest-api
+    restart: always
+    # depends_on:
+    #   - database
+    # networks:
+    #   - dev
+    ports:
+      - '8080:8080'
+
+networks:
+  dev:
+    driver: bridge
