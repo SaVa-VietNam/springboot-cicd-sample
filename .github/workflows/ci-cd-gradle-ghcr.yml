@@ -56,8 +56,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            user/rest-api:latest
-            user/rest-api:1.0.0
-            ghcr.io/user/rest-api:latest
-            ghcr.io/user/rest-api:1.0.0 
+          tags: ghcr.io/${{ github.actor }}/rest-api:latest
