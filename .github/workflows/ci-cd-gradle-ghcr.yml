@@ -3,12 +3,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ "ghcr" ]
-    tag:
+    tags:
       - '*.*.*'
   pull_request:
     branches: [ "ghcr" ]
-    tag:
-      - '*.*.*'
 
 env:
   REGISTRY: ghcr.io
@@ -16,7 +14,7 @@ env:
 
 jobs:
   build-deploy:
-    name: BUILD & DEPLOY API
+    name: BUILD & DEPLOY TO GHCR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
