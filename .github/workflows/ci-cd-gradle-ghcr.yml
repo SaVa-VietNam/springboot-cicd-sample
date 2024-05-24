@@ -1,9 +1,9 @@
 name: Build and deploy springboot-api to github container registry
 on:
   push:
-    branches: [ "ghcr" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "ghcr" ]
+    branches: [ "dev" ]
 
 jobs:
   build-deploy:
