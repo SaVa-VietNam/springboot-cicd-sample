@@ -42,13 +42,20 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Extract metadata (tags, labels) from docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/rest-api:latest
+      - run: echo ${{ github.repository }} 
       
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
+          tags: ${{ steps.meta.outputs.tags }}
           run: |
             docker build . -t ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
             docker push ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
