@@ -48,7 +48,7 @@ jobs:
         with:
           context: .
           push: true
-        #   tags: ghcr.io/${{ github.repository_owner }}/rest-api:latest
+          tags: ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
           run: |
             docker build . -t ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
             docker push ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
