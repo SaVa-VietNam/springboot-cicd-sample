@@ -48,7 +48,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/rest-api:latest
-      - run: echo ${{ github.repository }} 
+      - run: |
+         echo ${{ github.repository }}
+         echo ${{ github.repository_owner }}
+         echo ${{ github.actor }}
       
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -56,6 +59,7 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          run: |
-            docker build . -t ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
-            docker push ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
+          labels: ${{ steps.meta.outputs.labels }}
+        #   run: |
+        #     docker build . -t ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
+        #     docker push ghcr.io/Sava-VietNam/springboot-cicd-sample/rest-api:latest
